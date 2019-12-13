@@ -1,0 +1,71 @@
+<div class="form-horizontal pad-10">
+  <br>
+  <form #ajoutUserForm="ngForm">
+    <div class="col-md-6 form-group">
+      <label class=" control-label">Username</label>
+      <div class="col-md-12 no-padding">
+        <input name="username" id="username" #username="ngModel" [(ngModel)]="register.username" class="form-control" placeholder="" type="text" required />
+        <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
+          <div [hidden]="!username.errors.required">
+            Username is required !
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label class=" control-label">Password</label>
+      <div class="col-md-12 no-padding">
+        <input name="password" id="password" #password="ngModel" [(ngModel)]="register.password" class="form-control" placeholder="" type="password" required />
+        <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+          <div [hidden]="!password.errors.required">
+            Password is required !
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label class=" control-label">Name</label>
+      <div class="col-md-12 no-padding">
+        <input name="name" id="name" #name="ngModel" [(ngModel)]="register.name" class="form-control" placeholder="" type="text" required />
+        <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+          <div [hidden]="!libelle.errors.required">
+            Name is required !
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label class=" control-label">First name</label>
+      <div class="col-md-12 no-padding">
+        <input name="firstname" id="firstname" #firstname="ngModel" [(ngModel)]="register.firstname" class="form-control" placeholder="" type="text" required />
+        <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+          <div [hidden]="!firstname.errors.required">
+            Firstname is required !
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label class=" control-label">Email</label>
+      <div class="col-md-12 no-padding">
+        <input name="email" id="email" #email="ngModel" [(ngModel)]="register.email" class="form-control" placeholder="" type="email" required />
+        <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+          <div [hidden]="!email.errors.required">
+            Email is required !
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pad-10">
+      <button mwlConfirmationPopover
+              [popoverTitle]="'Confirmation'"
+              [popoverMessage]="'Are you sure?'"
+              placement="top"
+              (confirm)="createUser(register)"
+              type="submit" class="btn btn-save btn-primary" [disabled]="!ajoutUserForm.valid">
+        <span class="glyphicon glyphicon-floppy-disk"></span> Sauvegarder
+      </button>
+    </div>
+  </form>
+</div>
