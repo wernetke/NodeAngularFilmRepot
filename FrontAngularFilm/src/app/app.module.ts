@@ -13,9 +13,14 @@ import {RegisterService} from "./register/register.service";
 import {FormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
 import {ConfirmationPopoverModule} from "angular-confirmation-popover";
+import { LoginComponent } from './login/login.component';
+import {LoginService} from "./login/login.service";
+
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+
 ];
 
 @NgModule({
@@ -23,6 +28,7 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ const appRoutes: Routes = [
     })
   ],
   providers: [
-    RegisterService
+    RegisterService,
+    LoginService,
   ],
   bootstrap: [AppComponent]
 })

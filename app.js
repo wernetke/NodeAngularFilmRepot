@@ -17,9 +17,4 @@ db.once("open", () => {
 var UserTest = require('./controller/UserController');
 app.use('/registers', UserTest);
 
-
-
-
-
-
 module.exports = app;

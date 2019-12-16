@@ -6,16 +6,30 @@ var User = require('../model/user-model');
 var functions = require ('../controller/sendMail');
 
 
-router.get('/', function (req, res) {
- /*   Matiere.getmatieres(function(err,rows){
-        if(err) {
-            res.status(400).json(err);
+router.post('/login', function (req, res) {
+    console.log(req.body.username);
+    User.findOne({username: req.body.username}, function(err, user) {
+        if (err){
+            res.status(400).json(err)
         }
-        else
-        {
-            res.json(rows);
+        else if (user == null){
+            res.status(404);
         }
-    });*/
+        else{
+            user.comparePassword(req.body.password, function(err, isMatch) {
+            if (err) throw err;
+            console.log('Password:', isMatch); // -> Password123: true
+                if(!isMatch)
+                {
+                    res.status(200).json(user);
+                }
+                else{
+                    res.status(401);
+                }
+            });
+
+        }
+    });
 });
 
 router.post('/', function (req, res) {
