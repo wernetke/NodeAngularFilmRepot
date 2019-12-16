@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 @Injectable()
 export class RegisterService {
   constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) { }
-  url = 'http://localhost:3000';
+  url = 'http://localhost:8000';
   getUser() {
     return this
       .http
@@ -20,11 +20,11 @@ export class RegisterService {
         res => {
           console.log(res);
           this.toastr.success('You have been registered with success.', 'Success');
-          this.router.navigateByUrl('/register');
+          this.router.navigateByUrl('/');
         },
         err => {
           console.log('Error occured:' , err);
-          this.toastr.error(err.message, 'Error occured');
+          this.toastr.error("Username is already use, please choose an other", 'Error occured');
         }
       );
   }

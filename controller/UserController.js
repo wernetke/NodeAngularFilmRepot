@@ -3,6 +3,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 var User = require('../model/user-model');
+var functions = require ('../controller/sendMail');
+
 
 router.get('/', function (req, res) {
  /*   Matiere.getmatieres(function(err,rows){
@@ -17,7 +19,6 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    console.log('Save user');
 
     var testUser = new User({
         username: req.body.username,
@@ -28,24 +29,19 @@ router.post('/', function (req, res) {
     });
 // save user to database
     User.findOne({username: req.body.username}, function(err, user) {
-        if (err) throw err;
-
-        // test a matching password
-        user.comparePassword(req.body.password, function(err, isMatch) {
-            if (err) throw err;
-            console.log('Password123:', isMatch); // -> Password123: true
-        });
-
-        // test a failing password
-        user.comparePassword(req.body.password, function(err, isMatch) {
-            if (err) throw err;
-            console.log('123Password:', isMatch); // -> 123Password: false
-        });
+        if (err){
+            res.status(400).json(err)
+        }
+        else if (user == null){
+            testUser.save(function(err) {
+                if (err) throw err;
+            });
+            res.json(user);
+        }
+        else{
+            res.status(404);
+        }
     });
-    /*
-    testUser.save(function(err) {
-        if (err) throw err;
-    });*/
 });
 
 module.exports = router;
