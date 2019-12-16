@@ -7,7 +7,6 @@ var functions = require ('../controller/sendMail');
 
 
 router.post('/login', function (req, res) {
-    console.log(req.body.username);
     User.findOne({username: req.body.username}, function(err, user) {
         if (err){
             res.status(400).json(err)
@@ -21,13 +20,12 @@ router.post('/login', function (req, res) {
             console.log('Password:', isMatch); // -> Password123: true
                 if(!isMatch)
                 {
-                    res.status(200).json(user);
+                    res.status(401).json(err)
                 }
                 else{
-                    res.status(401);
+                    res.status(200).json(user);
                 }
             });
-
         }
     });
 });
@@ -53,7 +51,7 @@ router.post('/', function (req, res) {
             res.json(user);
         }
         else{
-            res.status(404);
+            res.status(401).json(err)
         }
     });
 });

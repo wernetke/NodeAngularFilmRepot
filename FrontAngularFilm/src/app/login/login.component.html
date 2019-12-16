@@ -4,7 +4,7 @@
     <div class="col-md-6 form-group">
       <label class=" control-label">Username</label>
       <div class="col-md-12 no-padding">
-        <input name="username" id="username" #username="ngModel" [(ngModel)]="user.username" class="form-control" placeholder="" type="text" required />
+        <input name="username" id="username" #username="ngModel" [(ngModel)]="login.username" class="form-control" placeholder="" type="text" required />
         <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
           <div [hidden]="!username.errors.required">
             Username is required !
@@ -15,7 +15,7 @@
     <div class="col-md-6 form-group">
       <label class=" control-label">Password</label>
       <div class="col-md-12 no-padding">
-        <input name="password" id="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="" type="password" required />
+        <input name="password" id="password" #password="ngModel" [(ngModel)]="login.password" class="form-control" placeholder="" type="password" required />
         <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
           <div [hidden]="!password.errors.required">
             Password is required !
@@ -25,7 +25,7 @@
     </div>
     <div class="pad-10">
       <button mwlConfirmationPopover
-              (confirm)="getUser(user)"
+              (confirm)="getUser(login)"
               type="submit" class="btn btn-save btn-primary" [disabled]="!loginForm.valid">
         <span class="glyphicon glyphicon-floppy-disk"></span> Sign in
       </button>
