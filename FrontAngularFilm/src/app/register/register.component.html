@@ -48,12 +48,17 @@
     <div class="col-md-6 form-group">
       <label class=" control-label">Email</label>
       <div class="col-md-12 no-padding">
-        <input name="email" id="email" #email="ngModel" [(ngModel)]="register.email" class="form-control" placeholder="" type="email" required />
+        <input name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel" [(ngModel)]="register.email" class="form-control" placeholder="" type="email" required />
         <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
           <div [hidden]="!email.errors.required">
             Email is required !
           </div>
+          <div [hidden]="!email.errors?.pattern">
+            Invalid pattern
+          </div>
         </div>
+
+
       </div>
     </div>
 
