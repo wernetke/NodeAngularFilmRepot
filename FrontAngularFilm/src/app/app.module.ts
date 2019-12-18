@@ -18,8 +18,7 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
 import { SessionComponent } from './session/session.component';
 import {SessionService} from "./session/session.service";
-
-
+import { BnNgIdleService } from 'bn-ng-idle'; // import bn-ng-idle service
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -63,6 +62,7 @@ const appRoutes: Routes = [
     RegisterService,
     LoginService,
     SessionService,
+    BnNgIdleService,
   ],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,6 @@ var User = require('../model/user-model');
 
 
 router.post('/', function (req, res) {
-    console.log("register");
     var testUser = new User({
         username: req.body.username,
         password: req.body.password,

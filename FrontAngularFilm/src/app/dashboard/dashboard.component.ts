@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import {SessionService} from "../session/session.service";
 import {LoginService} from "../login/login.service";
+import {BnNgIdleService} from "bn-ng-idle";
 
 @Component({
   selector: 'app-dashboard',
@@ -37,5 +38,7 @@ export class DashboardComponent {
   getBalance() {
     this.SessionService.getAccountBalance();
   }
+
+
 
 }
