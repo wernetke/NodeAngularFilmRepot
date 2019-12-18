@@ -10,7 +10,7 @@ export class RegisterService {
   url = 'http://localhost:8000';
 
   createUser(data) {
-    this.http.post(`${this.url}/registers`, data)
+    this.http.post(`/api/registers`, data)
       .subscribe(
         res => {
           console.log(res);

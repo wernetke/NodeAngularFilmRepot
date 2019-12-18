@@ -13,8 +13,12 @@ import {RegisterService} from "./register/register.service";
 import {FormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
 import {ConfirmationPopoverModule} from "angular-confirmation-popover";
+import { StorageServiceModule} from 'angular-webstorage-service';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
+import { SessionComponent } from './session/session.component';
+import {SessionService} from "./session/session.service";
+
 
 
 const appRoutes: Routes = [
@@ -29,9 +33,11 @@ const appRoutes: Routes = [
     DashboardComponent,
     RegisterComponent,
     LoginComponent,
+    SessionComponent,
   ],
   imports: [
     BrowserModule,
+    StorageServiceModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -56,6 +62,7 @@ const appRoutes: Routes = [
   providers: [
     RegisterService,
     LoginService,
+    SessionService,
   ],
   bootstrap: [AppComponent]
 })

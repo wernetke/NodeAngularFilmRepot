@@ -8,9 +8,21 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
+      <div class="account-balance-wrapper">
+        <div *ngIf="accountBalance">
+          Your balance is: {{accountBalance?.balance}}$
+        </div>
+        <br>
+        <div>
+          <button (click)="getBalance()">Get Account Balance</button>
+        </div>
+      </div>
+
       <a mat-list-item routerLink="/">Index</a>
       <a mat-list-item routerLink="/register">Register</a>
       <a mat-list-item routerLink="/login">Login</a>
+
+      <button (click)="doLogout()">Log Out</button>
 
       <!--<a mat-list-item href="/second-page">Link 2</a>
       <a mat-list-item href="#">Link 3</a>-->
