@@ -42,7 +42,10 @@ router.post('/login', function (req, res) {
                 else{
                     req.session.user = req.body.username;
                     req.session.role = user.role;
-                    res.status(200).json(req.body.username);
+                    res.status(200).send({
+                        user: req.session.user,
+                        role: req.session.role
+                    });
                 }
             });
         }

@@ -18,11 +18,18 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
 import { SessionComponent } from './session/session.component';
 import {SessionService} from "./session/session.service";
-import { BnNgIdleService } from 'bn-ng-idle'; // import bn-ng-idle service
+import { FilmSettingsComponent } from './film-settings/film-settings.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { FilmComponent } from './film/film.component';
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: UserDashboardComponent },
+  { path: 'user-settings', component: UserSettingsComponent },
+  { path: 'film-settings', component: FilmSettingsComponent },
+  { path: 'film', component: FilmComponent },
 
 ];
 
@@ -33,6 +40,10 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     SessionComponent,
+    FilmSettingsComponent,
+    UserSettingsComponent,
+    UserDashboardComponent,
+    FilmComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +73,6 @@ const appRoutes: Routes = [
     RegisterService,
     LoginService,
     SessionService,
-    BnNgIdleService,
   ],
   bootstrap: [AppComponent]
 })

@@ -8,14 +8,18 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
+      <div class="account-balance-wrapper">
+
       <a mat-list-item routerLink="/">Index</a>
+      <a mat-list-item routerLink="/film">Film</a>
+
       <div *ngIf="!loggedIn" class="logged-in">
-        <div class="account-balance-wrapper">
         <a mat-list-item routerLink="/register">Register</a>
         <a mat-list-item routerLink="/login">Login</a>
-        </div>
       </div>
       <div *ngIf="loggedIn" class="logged-in">
+        <a mat-list-item routerLink="/dashboard">Dashboard</a>
+
         <div *ngIf="accountBalance">
               Your balance is: {{accountBalance.balance}}
         </div>
@@ -24,10 +28,16 @@
           <button (click)="getBalance()">Get Account Balance</button>
         </div>
           <button (click)="doLogout()">Log Out</button>
+        <div *ngIf="adminIn" class="logged-in">
+            <a mat-list-item routerLink="/film-settings">Film settings </a>
+            <a mat-list-item routerLink="/user-settings">User settings</a>
+        </div>
       </div>
+
 
       <!--<a mat-list-item href="/second-page">Link 2</a>
       <a mat-list-item href="#">Link 3</a>-->
+      </div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
